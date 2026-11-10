@@ -1,7 +1,7 @@
 {
-  "name": "artesanias-wayu",
+  "name": "artesanias-cafe-y-luci",
   "version": "1.0.0",
-  "description": "E-commerce full-stack para Artesanías Wayú, negocio de artesanías colombianas en Bogotá",
+  "description": "E-commerce full-stack para Artesanías y Café Luci, negocio de artesanías colombianas y café de origen en Bogotá",
   "main": "backend/server.js",
   "type": "commonjs",
   "scripts": {
@@ -10,21 +10,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/KitsuXSTL/E-commerce_ArtesaniasWayu.git"
+    "url": "git+https://github.com/KitsuXSTL/E-commerce_cafe_y_Luci.git"
   },
-  "keywords": [
-    "ecommerce",
-    "nodejs",
-    "express",
-    "mongodb",
-    "artesanias"
-  ],
+  "keywords": ["ecommerce", "nodejs", "express", "mongodb", "artesanias", "colombia"],
   "author": "Juan Sebastián Torres Agudelo",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/KitsuXSTL/E-commerce_ArtesaniasWayu/issues"
+    "url": "https://github.com/KitsuXSTL/E-commerce_cafe_y_Luci/issues"
   },
-  "homepage": "https://github.com/KitsuXSTL/E-commerce_ArtesaniasWayu#readme",
+  "homepage": "https://github.com/KitsuXSTL/E-commerce_cafe_y_Luci#readme",
   "dependencies": {
     "cors": "^2.8.6",
     "dotenv": "^17.4.2",

@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Artesanías y Café Luci — Artesanías colombianas hechas a mano</title>
-  <meta name="description" content="Mochilas wayú, sombreros vueltiaos, lanchetas y café colombiano. Tienda de artesanías en Bogotá con envíos a todo el país.">
+  <meta name="description" content="Mochilas wayú, sombreros vueltiaos, anchetas y café colombiano. Tienda de artesanías en Bogotá con envíos a todo el país.">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+
+  <!-- Precarga la imagen del banner: es el poster del video y el respaldo si no carga -->
+  <link rel="preload" as="image" href="/img/hero.webp" type="image/webp">
 
   <link rel="stylesheet" href="/css/styles.css">
 </head>
@@ -60,66 +63,28 @@
   <main>
 
     <section class="hero">
+      <!-- Video decorativo de fondo: se reproduce una vez y queda en el último cuadro -->
+      <video class="hero__video" autoplay muted playsinline
+             poster="/img/hero.webp" aria-hidden="true">
+        <source src="/video/hero.mp4" type="video/mp4">
+      </video>
+
       <div class="contenedor hero__contenido">
         <div class="hero__bandera"><span></span><span></span><span></span></div>
         <p class="hero__eyebrow">HECHO EN COLOMBIA</p>
         <h1 class="hero__titulo">
-          Artesanía colombiana
+          Artesanías colombianas
           <em>y café de origen</em>
         </h1>
         <p class="hero__texto">
-          Mochilas wayú, sombreros vueltiaos y lanchetas hechas a mano por artesanos
-          de La Guajira y Córdoba, junto a café de fincas colombianas. Desde Bogotá
-          para todo el país.
+          Mochilas wayú y sombreros vueltiaos hechos a mano por artesanos de
+          La Guajira y Córdoba, anchetas para regalar y café de fincas
+          colombianas. Desde Bogotá para todo el país.
         </p>
         <div class="hero__acciones">
           <a href="/tienda.html" class="boton boton--principal">Ver la tienda</a>
           <a href="/nosotros.html" class="boton boton--claro">Conocer el taller</a>
         </div>
-      </div>
-    </section>
-
-    <section class="confianza">
-      <div class="contenedor">
-        <ul class="confianza__lista">
-          <li class="confianza__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M1 3h13v13H1zM14 8h4l3 3v5h-7z"/><circle cx="5.5" cy="18.5" r="2"/><circle cx="17.5" cy="18.5" r="2"/>
-            </svg>
-            <div>
-              <p class="confianza__titulo">Envíos a todo el país</p>
-              <p class="confianza__detalle">Despacho desde Bogotá</p>
-            </div>
-          </li>
-          <li class="confianza__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2l8 3v6c0 5-3.4 9.3-8 11-4.6-1.7-8-6-8-11V5z"/><path d="M9 12l2 2 4-4"/>
-            </svg>
-            <div>
-              <p class="confianza__titulo">Pago seguro</p>
-              <p class="confianza__detalle">PSE y tarjetas</p>
-            </div>
-          </li>
-          <li class="confianza__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M3 12a9 9 0 0 1 15.5-6.2L21 8"/><path d="M21 3v5h-5"/>
-              <path d="M21 12a9 9 0 0 1-15.5 6.2L3 16"/><path d="M3 21v-5h5"/>
-            </svg>
-            <div>
-              <p class="confianza__titulo">Cambios</p>
-              <p class="confianza__detalle">Escríbenos si algo no encaja</p>
-            </div>
-          </li>
-          <li class="confianza__item">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="9" r="6"/><path d="M8.5 14L7 22l5-2.5L17 22l-1.5-8"/>
-            </svg>
-            <div>
-              <p class="confianza__titulo">Hecho a mano</p>
-              <p class="confianza__detalle">Piezas originales</p>
-            </div>
-          </li>
-        </ul>
       </div>
     </section>
 

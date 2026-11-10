@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Producto — Artesanías y Café Luci</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Karla:wght@400;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="contenedor header__interior">
+      <a href="/" class="logo">
+        <span class="logo__nombre">Artesanías</span>
+        <span class="logo__inferior">&amp; CAFÉ LUCI</span>
+      </a>
+
+      <nav class="nav" aria-label="Navegación principal">
+        <ul class="nav__lista">
+          <li><a href="/" class="nav__enlace">Inicio</a></li>
+          <li><a href="/tienda.html" class="nav__enlace">Tienda</a></li>
+          <li><a href="/categorias.html" class="nav__enlace">Categorías</a></li>
+          <li><a href="/nosotros.html" class="nav__enlace">Nosotros</a></li>
+          <li><a href="/contacto.html" class="nav__enlace">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="acciones">
+        <a href="/carrito.html" class="accion" aria-label="Ver carrito de compras">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.6L21 8H6"/>
+            <circle cx="10" cy="20" r="1.2"/><circle cx="18" cy="20" r="1.2"/>
+          </svg>
+          <span class="accion__contador" id="contador-carrito" hidden>0</span>
+        </a>
+
+        <button class="menu-boton" aria-label="Abrir menú" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="contenedor">
+
+      <nav class="migas" aria-label="Ruta de navegación">
+        <a href="/">Inicio</a><span>/</span>
+        <a href="/tienda.html">Tienda</a><span>/</span>
+        <span id="miga-actual">Producto</span>
+      </nav>
+
+      <div class="detalle" id="detalle"></div>
+
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="contenedor">
+      <div class="footer__interior">
+        <div>
+          <h3 class="footer__titulo">Artesanías y Café Luci</h3>
+          <p class="footer__lista">
+            Artesanías colombianas y café de origen.<br>
+            Bogotá D.C., Colombia.
+          </p>
+        </div>
+        <div>
+          <h3 class="footer__titulo">Tienda</h3>
+          <ul class="footer__lista">
+            <li><a href="/tienda.html">Todos los productos</a></li>
+            <li><a href="/categorias.html">Categorías</a></li>
+            <li><a href="/carrito.html">Mi carrito</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3 class="footer__titulo">Contacto</h3>
+          <ul class="footer__lista">
+            <li><a href="/nosotros.html">Sobre nosotros</a></li>
+            <li><a href="/contacto.html">Escríbenos</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="footer__legal">© 2026 Artesanías y Café Luci. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script type="module" src="/js/main.js"></script>
+</body>
+</html>

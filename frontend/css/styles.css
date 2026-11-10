@@ -124,6 +124,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   border-bottom-color: var(--terracota);
 }
 
+/* Menú desplegable en móvil */
+.nav--abierta {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--crema);
+  border-bottom: 1px solid var(--linea);
+  padding: var(--e2) var(--e3);
+}
+
+.nav--abierta .nav__lista {
+  flex-direction: column;
+  gap: var(--e2);
+}
+
 .acciones { display: flex; align-items: center; gap: var(--e1); }
 
 .accion {
@@ -185,6 +202,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .boton--principal:hover { background-color: #D9992C; }
 
+.boton--principal:disabled {
+  background-color: var(--linea);
+  color: var(--tinta-suave);
+  cursor: not-allowed;
+}
+
 .boton--contorno {
   border: 1.5px solid var(--terracota);
   color: var(--terracota);
@@ -208,19 +231,48 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    ============================================ */
 .hero {
   position: relative;
-  min-height: 520px;
+  min-height: max(520px, calc(100vh - 76px));
+  min-height: max(520px, calc(100svh - 76px));
   display: flex;
   align-items: center;
   overflow: hidden;
-  /* Trama geométrica inspirada en los tejidos kanás */
-  background-color: #7A3410;
-  background-image:
-    repeating-linear-gradient(45deg,  rgba(232,169,60,0.16) 0 22px, transparent 22px 44px),
-    repeating-linear-gradient(-45deg, rgba(18,80,126,0.20) 0 22px, transparent 22px 44px),
-    linear-gradient(160deg, #8B3A0F 0%, #5E2609 100%);
+
+  /* Respaldo: color y luego imagen, por si el video no carga */
+  background-color: #5E2609;
+  background-image: url('/img/hero.webp');
+  background-size: cover;
+  background-position: 65% center;
 }
 
-.hero__contenido { position: relative; padding-block: var(--e5); }
+/* El video cubre todo el hero, como background-size: cover */
+.hero__video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 65% center;
+}
+
+/* Capa oscura encima del video para que el texto se lea */
+.hero::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(43, 29, 20, 0.72);
+}
+
+/* El texto queda por encima de la capa oscura */
+.hero__contenido {
+  position: relative;
+  z-index: 1;
+  padding-block: var(--e5);
+}
+
+/* Si la persona pidió reducir movimiento, se muestra solo la imagen */
+@media (prefers-reduced-motion: reduce) {
+  .hero__video { display: none; }
+}
 
 .hero__bandera {
   display: flex;
@@ -249,7 +301,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 700;
   line-height: 1.08;
   color: #fff;
-  max-width: 16ch;
+  max-width: 22ch;
 }
 
 .hero__titulo em {
@@ -271,37 +323,6 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   flex-wrap: wrap;
   gap: var(--e2);
 }
-
-/* ============================================
-   BARRA DE CONFIANZA
-   ============================================ */
-.confianza {
-  background-color: var(--terracota);
-  color: var(--crema);
-  padding-block: var(--e3);
-}
-
-.confianza__lista {
-  display: grid;
-  gap: var(--e3);
-  list-style: none;
-}
-
-.confianza__item {
-  display: flex;
-  align-items: center;
-  gap: 0.85rem;
-}
-
-.confianza__item svg {
-  width: 26px;
-  height: 26px;
-  flex-shrink: 0;
-  color: var(--dorado);
-}
-
-.confianza__titulo { font-weight: 700; font-size: 0.9375rem; }
-.confianza__detalle { font-size: 0.8125rem; opacity: 0.85; }
 
 /* ============================================
    SECCIONES
@@ -338,6 +359,37 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 .seccion__enlace:hover { text-decoration: underline; }
+
+/* ============================================
+   ENCABEZADO DE PÁGINA INTERNA
+   ============================================ */
+.pagina-cabecera {
+  padding-block: var(--e4);
+  border-bottom: 1px solid var(--linea);
+}
+
+.pagina-cabecera__titulo {
+  font-family: var(--serif);
+  font-size: clamp(1.875rem, 5vw, 2.75rem);
+  font-weight: 700;
+}
+
+.pagina-cabecera__texto {
+  margin-top: var(--e1);
+  color: var(--tinta-suave);
+}
+
+/* ============================================
+   MIGAS DE PAN
+   ============================================ */
+.migas {
+  padding-block: var(--e2);
+  font-size: 0.875rem;
+  color: var(--tinta-suave);
+}
+
+.migas a:hover { color: var(--terracota); }
+.migas span { margin-inline: 0.4rem; }
 
 /* ============================================
    CATEGORÍAS
@@ -381,7 +433,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .categoria--mochilas   { background: linear-gradient(140deg, #C2185B, #7B1FA2); }
 .categoria--sombreros  { background: linear-gradient(140deg, #E8A93C, #B06A12); }
-.categoria--lanchetas  { background: linear-gradient(140deg, #00897B, #00565B); }
+.categoria--anchetas   { background: linear-gradient(140deg, #00897B, #00565B); }
 .categoria--bebidas    { background: linear-gradient(140deg, #8B3A0F, #4E2008); }
 .categoria--souvenirs  { background: linear-gradient(140deg, #1565C0, #0D3B7A); }
 .categoria--otros      { background: linear-gradient(140deg, #6D4C41, #3E2723); }
@@ -415,6 +467,54 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ============================================
+   BARRA DE HERRAMIENTAS DE LA TIENDA
+   ============================================ */
+.herramientas {
+  display: grid;
+  gap: var(--e3);
+  margin-bottom: var(--e4);
+}
+
+.buscador {
+  display: flex;
+  gap: var(--e1);
+  max-width: 460px;
+}
+
+.buscador__campo {
+  flex: 1;
+  padding: 0.75em 1.1em;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  color: var(--tinta);
+  background-color: var(--blanco-calido);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-pildora);
+}
+
+.buscador__campo::placeholder { color: var(--tinta-suave); }
+.buscador__campo:focus { outline: 2px solid var(--terracota); outline-offset: 1px; }
+
+.buscador__boton {
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  flex-shrink: 0;
+  background-color: var(--terracota);
+  color: var(--crema);
+  border-radius: var(--radio-pildora);
+}
+
+.buscador__boton svg { width: 18px; height: 18px; }
+.buscador__boton:hover { background-color: var(--tinta); }
+
+.resumen {
+  font-size: 0.9375rem;
+  color: var(--tinta-suave);
+}
+
+/* ============================================
    TARJETA DE PRODUCTO
    ============================================ */
 .productos {
@@ -440,6 +540,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .producto__marco {
   position: relative;
+  display: block;
   aspect-ratio: 3 / 4;
   background-color: var(--arena);
 }
@@ -498,6 +599,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   line-height: 1.3;
 }
 
+.producto__nombre a:hover { color: var(--terracota); }
+
 .producto__precio {
   margin-top: auto;
   padding-top: var(--e1);
@@ -505,6 +608,107 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   font-weight: 700;
   color: var(--terracota);
 }
+
+/* ============================================
+   PAGINACIÓN
+   ============================================ */
+.paginacion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--e2);
+  margin-top: var(--e5);
+}
+
+.paginacion__boton {
+  padding: 0.6em 1.4em;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--tinta);
+  background-color: var(--blanco-calido);
+  border: 1px solid var(--linea);
+  border-radius: var(--radio-pildora);
+}
+
+.paginacion__boton:hover:not(:disabled) {
+  border-color: var(--terracota);
+  color: var(--terracota);
+}
+
+.paginacion__boton:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.paginacion__info {
+  font-size: 0.875rem;
+  color: var(--tinta-suave);
+}
+
+.paginacion[hidden] { display: none; }
+
+/* ============================================
+   DETALLE DE PRODUCTO
+   ============================================ */
+.detalle {
+  display: grid;
+  gap: var(--e4);
+  padding-block: var(--e4) var(--e6);
+}
+
+.detalle__marco {
+  aspect-ratio: 3 / 4;
+  border-radius: var(--radio);
+  overflow: hidden;
+  background-color: var(--arena);
+}
+
+.detalle__imagen { width: 100%; height: 100%; object-fit: cover; }
+
+.detalle__categoria {
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--terracota);
+}
+
+.detalle__nombre {
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  margin-block: var(--e1) var(--e2);
+}
+
+.detalle__precio {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--terracota);
+}
+
+.detalle__descripcion {
+  margin-top: var(--e3);
+  color: var(--tinta-suave);
+}
+
+.detalle__ficha {
+  margin-top: var(--e3);
+  border-top: 1px solid var(--linea);
+}
+
+.detalle__fila {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--e2);
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--linea);
+  font-size: 0.9375rem;
+}
+
+.detalle__clave { color: var(--tinta-suave); }
+.detalle__valor { font-weight: 700; text-align: right; }
+
+.detalle__acciones { margin-top: var(--e4); }
 
 /* ============================================
    ESTADOS (carga, vacío, error)
@@ -523,7 +727,32 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   margin-bottom: 0.35rem;
 }
 
+.estado a {
+  color: var(--terracota);
+  font-weight: 700;
+}
+
 .centrado { text-align: center; margin-top: var(--e4); }
+
+/* ============================================
+   APARICIÓN AL HACER SCROLL
+   Solo se anima si la persona no pidió reducir movimiento.
+   Va después de las tarjetas para que su transición tenga prioridad.
+   ============================================ */
+@media (prefers-reduced-motion: no-preference) {
+  .revelar {
+    opacity: 0;
+    transform: translateY(28px);
+    transition:
+      opacity 0.6s ease,
+      transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+
+  .revelar--visible {
+    opacity: 1;
+    transform: none;
+  }
+}
 
 /* ============================================
    FOOTER
@@ -564,14 +793,23 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
    PANTALLAS MAYORES
    ============================================ */
 @media (min-width: 700px) {
-  .confianza__lista { grid-template-columns: repeat(2, 1fr); }
   .categorias { grid-template-columns: repeat(3, 1fr); }
 }
 
 @media (min-width: 900px) {
   .nav { display: block; }
   .menu-boton { display: none; }
-  .confianza__lista { grid-template-columns: repeat(4, 1fr); }
   .categorias { grid-template-columns: repeat(6, 1fr); }
   .footer__interior { grid-template-columns: 2fr 1fr 1fr; }
+  .herramientas { grid-template-columns: 1fr auto; align-items: center; }
+  .detalle { grid-template-columns: 1fr 1fr; gap: var(--e5); align-items: start; }
+
+  /* En pantallas grandes la capa oscura se concentra a la izquierda,
+     donde está el texto, y deja ver el video a la derecha */
+  .hero::after {
+    background: linear-gradient(90deg,
+      rgba(43, 29, 20, 0.88) 0%,
+      rgba(43, 29, 20, 0.60) 45%,
+      rgba(43, 29, 20, 0.15) 100%);
+  }
 }
