@@ -1,6 +1,6 @@
-# ☕ Artesanías Café y Luci — E-commerce
+# ☕ Casa Matriarcada — E-commerce
 
-Plataforma de comercio electrónico full-stack para **Artesanías Café y Luci**, un negocio
+Plataforma de comercio electrónico full-stack para **Casa Matriarcada**, un negocio
 local ubicado en Bogotá D.C., Colombia, dedicado a la venta de productos artesanales de
 marca colombiana —mochilas wayú, sombreros vueltiaos, lanchetas y souvenirs— junto a café
 de origen.
@@ -380,3 +380,4 @@ por cada operación y ejecutar peticiones de prueba contra el servidor.
 
 Desarrollado por **Juan Sebastián Torres Agudelo**
 Estudiante de Ingeniería de Software — Universidad Manuela Beltrán, Bogotá, Colombia
+
